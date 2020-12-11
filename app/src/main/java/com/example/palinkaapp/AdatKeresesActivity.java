@@ -12,9 +12,6 @@ import android.widget.Toast;
 
 public class AdatKeresesActivity extends AppCompatActivity {
 
-    public EditText etFindFozo, etFindGyumolcs;
-    public Button btnFind, btnFindBack;
-    public TextView tvFindList;
 
     DBhelper adatbazis;
 
@@ -25,20 +22,6 @@ public class AdatKeresesActivity extends AppCompatActivity {
 
         init();
 
-        btnFind.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                adatKereses();
-            }
-        });
-        btnFindBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent back = new Intent(AdatKeresesActivity.this, MainActivity.class);
-                startActivity(back);
-                finish();
-            }
-        });
     }
 
 
@@ -48,11 +31,6 @@ public class AdatKeresesActivity extends AppCompatActivity {
 
 
     private void init() {
-        etFindFozo = findViewById(R.id.etFindFozo);
-        etFindGyumolcs = findViewById(R.id.etFindGyumolcs);
-        btnFind = findViewById(R.id.btnFind);
-        btnFindBack = findViewById(R.id.btnFindBack);
-        tvFindList = findViewById(R.id.tvFindList);
 
         adatbazis = new DBhelper(AdatKeresesActivity.this);
     }

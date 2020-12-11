@@ -9,9 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PalinkaApp">
-        <activity android:name=".AdatKeresesActivity"></activity>
-        <activity android:name=".AdatFelvetelActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".AdatKeresesActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".AdatFelvetelActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

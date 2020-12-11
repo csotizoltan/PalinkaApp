@@ -7,5 +7,5 @@
     tools:context=".AdatKeresesActivity"
     android:orientation="vertical">
 
-   
+
 </LinearLayout>
