@@ -22,16 +22,19 @@ public class DBhelper extends SQLiteOpenHelper {
         super(context, DB_NAME, null, DB_VERSION);
     }
 
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         String sql  = "CREATE TABLE IF NOT EXISTS "+PALINKA_TABLE+" (" +
                 COL_ID+" INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COL_FOZO+" VARCHAR(255) NOT NULL, " +
                 COL_GYUMOLCS+" VARCHAR(255) NOT NULL, " +
-                COL_ALKOHOL+" INTEGER NOT NULL " +
+                COL_ALKOHOL+" INTEGER NOT NULL, " +
+                "UNIQUE (" + COL_FOZO + "," + COL_GYUMOLCS + ")" +
                 ")";
         db.execSQL(sql);
     }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -39,6 +42,7 @@ public class DBhelper extends SQLiteOpenHelper {
         db.execSQL(sql);
         onCreate(db);
     }
+
 
     public boolean adatRogzites(String fozo, String gyumolcs, String alkohol) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -49,14 +53,20 @@ public class DBhelper extends SQLiteOpenHelper {
         return db.insert(PALINKA_TABLE, null, values) != -1;
     }
 
+
     public Cursor adatLekerdezes() {
         SQLiteDatabase db = this.getReadableDatabase();
         return db.query(PALINKA_TABLE, new String[]{COL_ID, COL_FOZO, COL_GYUMOLCS, COL_ALKOHOL}, null, null,
                 null, null, null);
     }
 
-    public boolean adatKereses() {
-        return false;
-    }
 
+    public Cursor adatKereses(String fozoSearchInput, String gyumolcsSearchInput) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String where = "fozo = ? and gyumolcs = ?";
+        String[] whereArgs = {fozoSearchInput, gyumolcsSearchInput};
+
+        return db.query(PALINKA_TABLE, new String[]{COL_ID, COL_FOZO, COL_GYUMOLCS, COL_ALKOHOL}, where, whereArgs,
+                null, null, null);
+    }
 }

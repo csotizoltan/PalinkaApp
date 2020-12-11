@@ -7,5 +7,45 @@
     tools:context=".AdatKeresesActivity"
     android:orientation="vertical">
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:hint="Főző"
+        android:id="@+id/etFindFozo">
+    </EditText>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:hint="Gyümölcs"
+        android:id="@+id/etFindGyumolcs">
+    </EditText>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="Keresés"
+        android:id="@+id/btnFind">
+    </Button>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="Vissza"
+        android:id="@+id/btnFindBack">
+    </Button>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvFindList"
+        android:textSize="25sp"
+        android:maxLines="99"
+        android:scrollbars="vertical">
+    </TextView>
 
 </LinearLayout>
